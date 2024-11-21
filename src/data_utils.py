@@ -30,6 +30,8 @@ def get_orders(task, data, args, sents, labels):
         device = torch.device('cuda:0')
     else:
         device = torch.device("cpu")
+        
+    print(device)
     tokenizer = T5Tokenizer.from_pretrained("t5-base")
     model = MyT5ForConditionalGenerationScore.from_pretrained( "t5-base")
     optim_orders_all = choose_best_order_global(sents, labels, model,
@@ -129,8 +131,6 @@ def order_scores_function(quad_list, cur_sent, model, tokenizer, device, task):
         all_orders_list.append(cur_order)
         cur_target = []
         for each_q in quad_list:
-            print(each_q.keys())
-            print(cur_order)
             cur_target.append(each_q[cur_order][0])
 
         all_inputs.append(cur_sent)
@@ -205,7 +205,7 @@ def choose_best_order_global(sents, labels, model, tokenizer, device, task):
 
                 order_name = " ".join(order)
                 order_name = order_name.strip()
-                
+
                 content = " ".join(content)
                 permute_object[order_name] = [content, " ".join(each)]
 
