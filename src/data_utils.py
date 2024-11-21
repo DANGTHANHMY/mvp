@@ -31,7 +31,6 @@ def get_orders(task, data, args, sents, labels):
     else:
         device = torch.device("cpu")
         
-    print(device)
     tokenizer = T5Tokenizer.from_pretrained("t5-base")
     model = MyT5ForConditionalGenerationScore.from_pretrained( "t5-base")
     optim_orders_all = choose_best_order_global(sents, labels, model,
@@ -127,9 +126,9 @@ def order_scores_function(quad_list, cur_sent, model, tokenizer, device, task):
     all_inputs = []
     cur_sent = " ".join(cur_sent)
     for each_order in all_orders:
-        print('each_order:',each_order)
+        
         cur_order = " ".join(each_order)
-        print('cur_order:',cur_order)
+        
         all_orders_list.append(cur_order)
         cur_target = []
         for each_q in quad_list:
@@ -137,7 +136,7 @@ def order_scores_function(quad_list, cur_sent, model, tokenizer, device, task):
 
         all_inputs.append(cur_sent)
         all_targets.append(" ".join(cur_target))
-    print('all_orders_list:',all_orders_list)
+    
     tokenized_input = tokenizer.batch_encode_plus(all_inputs,
                                                   max_length=200,
                                                   padding="max_length",
@@ -208,7 +207,6 @@ def choose_best_order_global(sents, labels, model, tokenizer, device, task):
 
                 order_name = "".join(order)
                 order_name = order_name.strip()
-                print('order_name:',order_name)
 
                 content = " ".join(content)
                 permute_object[order_name] = [content, " ".join(each)]
@@ -217,10 +215,8 @@ def choose_best_order_global(sents, labels, model, tokenizer, device, task):
 
         order_scores = order_scores_function(quad_list, sent, model, tokenizer,
                                              device, task)
-        print(all_orders_list)
-        print(order_scores.keys())
+        
         for e in order_scores.keys():
-            #e = e.replace("  ", " ")
             index = all_orders_list.index(e)
             scores[index] += order_scores[e]['entropy']
             break
