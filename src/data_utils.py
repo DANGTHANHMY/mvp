@@ -200,8 +200,10 @@ def choose_best_order_global(sents, labels, model, tokenizer, device, task):
                 order = []
                 content = []
                 for e in each:
+                    print(e)
                     order.append(e[0:4])
                     content.append(e[4:])
+                print(order)
                 order_name = " ".join(order)
                 print(order_name)
                 content = " ".join(content)
