@@ -214,8 +214,9 @@ def choose_best_order_global(sents, labels, model, tokenizer, device, task):
 
         order_scores = order_scores_function(quad_list, sent, model, tokenizer,
                                              device, task)
-        
+        print(all_orders_list)
         for e in order_scores.keys():
+            print(e)
             index = all_orders_list.index(e)
             scores[index] += order_scores[e]['entropy']
 
