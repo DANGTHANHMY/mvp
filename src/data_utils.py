@@ -149,6 +149,8 @@ def order_scores_function(quad_list, cur_sent, model, tokenizer, device, task):
 
     target_ids = tokenized_target["input_ids"]
     target_ids[target_ids[:, :] == tokenizer.pad_token_id] = -100
+    model = model.to(device)
+    
     outputs = model(
         input_ids=tokenized_input["input_ids"].to(device),
         attention_mask=tokenized_input["attention_mask"].to(device),
