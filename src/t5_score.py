@@ -175,7 +175,6 @@ class MyT5ForConditionalGenerationScore(T5PreTrainedModel):
         if encoder_outputs is None:
             # Convert encoder inputs in embeddings if needed
             device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-            print(device)
             input_ids = input_ids.to(device)
             attention_mask = attention_mask.to(device)
             self.encoder = self.encoder.to(device)
