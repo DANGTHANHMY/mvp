@@ -203,6 +203,7 @@ def choose_best_order_global(sents, labels, model, tokenizer, device, task):
                     order.append(e[0:4])
                     content.append(e[4:])
                 order_name = " ".join(order)
+                print(order_name)
                 content = " ".join(content)
                 permute_object[order_name] = [content, " ".join(each)]
 
