@@ -204,7 +204,7 @@ def choose_best_order_global(sents, labels, model, tokenizer, device, task):
                     order.append(e[0:4])
                     content.append(e[4:])
 
-                order_name = " ".join(order)
+                order_name = "".join(order)
                 order_name = order_name.strip()
 
                 content = " ".join(content)
@@ -220,6 +220,7 @@ def choose_best_order_global(sents, labels, model, tokenizer, device, task):
             print(e)
             index = all_orders_list.index(e)
             scores[index] += order_scores[e]['entropy']
+            break
 
     indexes = np.argsort(np.array(scores))  # [::-1]
     returned_orders = []
