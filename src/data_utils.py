@@ -206,7 +206,7 @@ def choose_best_order_global(sents, labels, model, tokenizer, device, task):
                     order.append(e[0:4])
                     content.append(e[4:])
 
-                order_name = " ".join(order)
+                order_name = "".join(order)
                 order_name = order_name.strip()
                 print('order_name:',order_name)
 
