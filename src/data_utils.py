@@ -129,7 +129,7 @@ def order_scores_function(quad_list, cur_sent, model, tokenizer, device, task):
         all_orders_list.append(cur_order)
         cur_target = []
         for each_q in quad_list:
-            print(each_q[cur_order][0])
+            print(each_q)
             print(cur_target)
             cur_target.append(each_q[cur_order][0])
 
