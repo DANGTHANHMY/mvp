@@ -65,11 +65,13 @@ def compute_f1_scores(pred_pt, gold_pt, verbose=True):
     for i in range(len(pred_pt)):
         print('gold_pt[i]:', gold_pt[i])
         print('len(gold_pt[i]):', len(gold_pt[i]))
-        print('len(pred_pt[i]):', len(pred_pt[i]))
+        print('pred_pt[i]:', pred_pt[i])
         print('len(pred_pt[i]):', len(pred_pt[i]))
         n_gold += len(gold_pt[i])
         n_pred += len(pred_pt[i])
-
+        print('n_gold:', n_gold)
+        print('n_pred:', n_pred)
+     
         for t in pred_pt[i]:
             print('t:',t)
             print('gold_pt[i]:', gold_pt[i])
