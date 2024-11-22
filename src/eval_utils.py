@@ -57,24 +57,22 @@ def compute_f1_scores(pred_pt, gold_pt, verbose=True):
     The input needs to be already processed
     """
 
-    print(pred_pt)
-    print(gold_pt)
     # number of true postive, gold standard, predictions
     n_tp, n_gold, n_pred = 0, 0, 0
 
     for i in range(len(pred_pt)):
-        print('gold_pt[i]:', gold_pt[i])
-        print('len(gold_pt[i]):', len(gold_pt[i]))
-        print('pred_pt[i]:', pred_pt[i])
-        print('len(pred_pt[i]):', len(pred_pt[i]))
+        # print('gold_pt[i]:', gold_pt[i])
+        # print('len(gold_pt[i]):', len(gold_pt[i]))
+        # print('pred_pt[i]:', pred_pt[i])
+        # print('len(pred_pt[i]):', len(pred_pt[i]))
         n_gold += len(gold_pt[i])
         n_pred += len(pred_pt[i])
-        print('n_gold:', n_gold)
-        print('n_pred:', n_pred)
+        # print('n_gold:', n_gold)
+        # print('n_pred:', n_pred)
      
         for t in pred_pt[i]:
-            print('t:',t)
-            print('gold_pt[i]:', gold_pt[i])
+            # print('t:',t)
+            # print('gold_pt[i]:', gold_pt[i])
             if t in gold_pt[i]:
                 n_tp += 1
 
