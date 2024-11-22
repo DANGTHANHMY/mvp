@@ -56,14 +56,23 @@ def compute_f1_scores(pred_pt, gold_pt, verbose=True):
     Function to compute F1 scores with pred and gold quads
     The input needs to be already processed
     """
+
+    print(pred_pt)
+    print(gold_pt)
     # number of true postive, gold standard, predictions
     n_tp, n_gold, n_pred = 0, 0, 0
 
     for i in range(len(pred_pt)):
+        print('gold_pt[i]:', gold_pt[i])
+        print('len(gold_pt[i]):', len(gold_pt[i]))
+        print('len(pred_pt[i]):', len(pred_pt[i]))
+        print('len(pred_pt[i]):', len(pred_pt[i]))
         n_gold += len(gold_pt[i])
         n_pred += len(pred_pt[i])
 
         for t in pred_pt[i]:
+            print('t:',t)
+            print('gold_pt[i]:', gold_pt[i])
             if t in gold_pt[i]:
                 n_tp += 1
 
@@ -105,7 +114,7 @@ def compute_scores(pred_seqs, gold_seqs, verbose=True):
 
         all_labels.append(gold_list)
         all_preds.append(pred_list)
-
+    
     scores = compute_f1_scores(all_preds, all_labels)
 
     return scores, all_labels, all_preds
